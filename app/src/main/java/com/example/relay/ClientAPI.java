@@ -1,29 +1,22 @@
 package com.example.relay;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import org.joda.time.DateTime;
 import java.io.IOException;
+import java.util.Date;
 
-import okhttp3.Call;
-import okhttp3.Callback;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 public class ClientAPI extends AsyncTask<String, Void, String>{
 
-    private String url;
-    private static StringBuffer BaseURL = new StringBuffer("http://newsapi.org/v2/everything?q=&from=2020-10-05&sortBy=publishedAt&apiKey=b38c027d148f4a0c88abeba6d67b337e");
-    private String res;
+    private static final String API_KEY = "b38c027d148f4a0c88abeba6d67b337e";
     OkHttpClient client = new OkHttpClient();
     public AsyncResponse delegate = null;
-
 
 
     protected String doInBackground(String... keys){
@@ -41,7 +34,21 @@ public class ClientAPI extends AsyncTask<String, Void, String>{
 
 
     public String get(String searchKey){
-        String url = BaseURL.insert(35, searchKey).toString();
+
+        DateTime datetime = new DateTime(new Date());
+        datetime = datetime.minusDays(7);
+        String dateStr = datetime.getYear() + "-" +datetime.monthOfYear().getAsString() + "-" + datetime.dayOfMonth().getAsString();
+
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("https")
+                .host("newsapi.org")
+                .addPathSegments("v2/everything")
+                .addQueryParameter("q", searchKey)
+                .addQueryParameter("from", dateStr)
+                .addQueryParameter("sortBy", "publishedAt")
+                .addQueryParameter("apiKey", API_KEY)
+                .build();
+
         Request request = new Request.Builder()
                 .url(url)
                 .build();
