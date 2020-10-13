@@ -9,6 +9,11 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class NewsListActivity extends AppCompatActivity implements AsyncResponse {
     private static final String SEARCH_KEY = "content.search_key";
     String searchKey;
@@ -40,6 +45,24 @@ public class NewsListActivity extends AppCompatActivity implements AsyncResponse
     }
     @Override
     public void processFinish(String output) {
-        textView.setText(output);
+        try {
+            JSONObject res = new JSONObject(output);
+            JSONArray articles = res.getJSONArray("articles");
+            ArrayList<Article> articleList = new ArrayList<>();
+            for (int i = 0; i < articles.length(); i++){
+                articleList.add(new Article(articles.getJSONObject(i)));
+            }
+
+            for (int i = 0; i < articles.length(); i++){
+                Log.i("a", articleList.get(i).toString());
+            }
+
+
+            textView.setText(articleList.toString());
+
+        }catch (Exception e){
+
+        }
+
     }
 }
