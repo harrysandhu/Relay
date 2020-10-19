@@ -12,6 +12,7 @@ public class Article {
     private String url;
     private String urlToImage;
     private String content;
+    private String jsonString;
 
     public Article(String source, String author, String title, String description, String publishedAt, String url,
                    String urlToImage, String content){
@@ -35,7 +36,7 @@ public class Article {
             this.url =  article.get("url").toString();
             this.urlToImage =  article.get("urlToImage").toString();
             this.content =  article.get("content").toString();
-
+            this.jsonString = article.toString();
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -75,7 +76,9 @@ public class Article {
         return urlToImage;
     }
 
-
+    public String getJsonString() {
+        return jsonString;
+    }
 
     @Override
     public String toString() {
