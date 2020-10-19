@@ -8,4 +8,7 @@
     <string name="news_title">News Title</string>
     <string name="date">Date</string>
     <string name="description">description</string>
+    <string name="name1">Harmandeep Sandhu</string>
+    <string name="name2">Shubhankar Sethi</string>
+    <string name="todo">TODO</string>
 </resources>
