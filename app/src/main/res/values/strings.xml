@@ -3,4 +3,9 @@
     <string name="API_KEY">b38c027d148f4a0c88abeba6d67b337e</string>
     <string name="search_for_news">Search for news</string>
     <string name="news_list_page_title">Results</string>
+    <string name="author">Author</string>
+    <string name="articleimg">articleimg</string>
+    <string name="news_title">News Title</string>
+    <string name="date">Date</string>
+    <string name="description">description</string>
 </resources>

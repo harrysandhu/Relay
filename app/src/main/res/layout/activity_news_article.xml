@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
@@ -29,7 +29,7 @@
                 android:layout_marginTop="33dp"
                 android:layout_marginEnd="0dp"
                 android:layout_marginBottom="10dp"
-                android:contentDescription="articleimg"
+                android:contentDescription="@string/articleimg"
                 app:srcCompat="@drawable/logo" />
 
             <TextView
@@ -41,9 +41,9 @@
                 android:layout_marginEnd="37dp"
                 android:layout_marginBottom="5dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="News Title"
+                android:text="@string/news_title"
                 android:textColor="#000000"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/articleAuthor"
@@ -52,8 +52,8 @@
                 android:layout_marginStart="37dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="37dp"
-                android:text="Author"
-                android:textSize="18dp" />
+                android:text="@string/author"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/articleDate"
@@ -62,7 +62,7 @@
                 android:layout_marginStart="37dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="133dp"
-                android:text="Date" />
+                android:text="@string/date" />
 
             <TextView
                 android:id="@+id/articleDescription"
@@ -72,9 +72,9 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="25dp"
                 android:lineSpacingExtra="8sp"
-                android:text="description"
+                android:text="@string/description"
                 android:textColor="#000000"
-                android:textSize="16dp" />
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>
