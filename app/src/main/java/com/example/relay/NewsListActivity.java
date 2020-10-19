@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -19,6 +20,7 @@ public class NewsListActivity extends AppCompatActivity implements AsyncResponse
     String searchKey;
     ClientAPI client = new ClientAPI();
     TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +59,11 @@ public class NewsListActivity extends AppCompatActivity implements AsyncResponse
                 Log.i("a", articleList.get(i).toString());
             }
 
-
+            ListView mListView = (ListView) findViewById(R.id.listView);
             textView.setText(articleList.toString());
+
+            ArticleListAdapter adapter = new ArticleListAdapter(this, R.layout.activity_news_list, articleList);
+            mListView.setAdapter(adapter);
 
         }catch (Exception e){
 
